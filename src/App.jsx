@@ -9,27 +9,33 @@ function App() {
 
   return (
     <>
-      <h1>Learn Web development</h1>
+      {/* macro-container */}
+      <div className="container">
+        {/* titolo */}
+        <h1 className="mb-4 text-start bg-light">Learn Web development</h1>
 
-      {/* lista bottoni */}
-      <div>
-        {languages.map((language) => (
-          <button
-            key={language.id}
-            onClick={() => setSelectedLanguage(language)}
-          >
-            {language.title}
-          </button>
-        ))}
-      </div>
-
-      {/* testo */}
-      {selectedLanguage && (
-        <div>
-          <h2>{selectedLanguage.title}</h2>
-          <p>{selectedLanguage.description}</p>
+        {/* lista bottoni */}
+        <div className="d-flex gap-2 mb-4">
+          {languages.map((language) => (
+            <button
+              key={language.id}
+              type="button"
+              className="btn btn-primary m-1"
+              onClick={() => setSelectedLanguage(language)}
+            >
+              {language.title}
+            </button>
+          ))}
         </div>
-      )}
+
+        {/* testo */}
+        {selectedLanguage && (
+          <div className="card text-start">
+            <h4 className="card-title">{selectedLanguage.title}</h4>
+            <p className="card-text">{selectedLanguage.description}</p>
+          </div>
+        )}
+      </div>
     </>
   );
 }
