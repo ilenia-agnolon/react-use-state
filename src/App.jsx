@@ -5,7 +5,7 @@ import languages from "../languages.js";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [selectedLanguage, setSelectedLanguage] = useState(false);
 
   return (
     <>
@@ -13,17 +13,23 @@ function App() {
 
       {/* lista bottoni */}
       <div>
-        {languages.map(({ id, title }) => (
-          <button key={id}>{title}</button>
+        {languages.map((language) => (
+          <button
+            key={language.id}
+            onClick={() => setSelectedLanguage(language)}
+          >
+            {language.title}
+          </button>
         ))}
       </div>
 
       {/* testo */}
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit earum
-        mollitia eum sequi? Doloribus in nisi, optio incidunt modi minima alias
-        exercitationem accusamus vero possimus eos vitae reiciendis aut illum?
-      </p>
+      {selectedLanguage && (
+        <div>
+          <h2>{selectedLanguage.title}</h2>
+          <p>{selectedLanguage.description}</p>
+        </div>
+      )}
     </>
   );
 }
